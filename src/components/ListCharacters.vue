@@ -1,10 +1,11 @@
 <template>
 <section>
   <div class="characters">
-    <div class="item_characters" v-for="personaje in characters" :key="personaje.id">
-      {{ personaje }}
-    </div>
-    <h1>aqui va texto</h1>
+        <!-- <div class="item_characters" v-for="personaje in characters" :key="personaje.id">
+        {{ personaje }}
+        </div> -->
+                
+    <h1>aqui va texto</h1>{{  characters}}
   </div>
 </section>
 
@@ -23,7 +24,7 @@ import { useStore } from 'vuex';
                 return store.state.charactersFilter
             })
             onMounted (()=>{
-                store.dispatch('getCharacters')
+                store.dispatch('setCharactersFilter')
             })
             return {
                 characters

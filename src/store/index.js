@@ -19,6 +19,7 @@ export default createStore({
     try {
         const response = await fetch('https://rickandmortyapi.com/api')
         const data = await response.json
+        console.log(data)
         commit('setCharacters', data.result)
         commit('setCharactersFilter', data.result)
     } catch (error) {
