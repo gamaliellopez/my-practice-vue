@@ -4,32 +4,30 @@ export default createStore({
   state: {
     characters: [],
     charactersFilter: []
-
   },
   mutations: {
-    setCharacters(state, payload){
-        state.characters = payload
+    setCharacters(state, payload) {
+      state.characters = payload
     },
-    setcharactersFilter(state, payload){
-        state.charactersFilter = payload
+    setCharactersFilter(state, payload) {
+      state.charactersFilter = payload
     }
   },
   actions: {
-   async getCharacters({commit}){
-    try {
-        const response = await fetch('https://rickandmortyapi.com/api')
-        const data = await response.json
+    async getCharacters({ commit }) {
+      try {
+        const response = await fetch('https://rickandmortyapi.com/api/character')
+        const data = await response.json()
         console.log(data)
-        commit('setCharacters', data.result)
-        commit('setCharactersFilter', data.result)
-    } catch (error) {
-        console.error(error)
+        commit('setCharacters', data.results)
+        commit('setCharactersFilter', data.results)
+      } catch (error) {
+        console.error('Error al obtener personajes:', error)
+      }
     }
-   }
   },
   getters: {
-    doubleCount: (state) => state.count * 2,
-  },
+    // Si no tienes 'count' en tu state, elimina este getter
+    // doubleCount: (state) => state.count * 2,
+  }
 })
-
-    // export default store
